@@ -1,0 +1,182 @@
+https://github.com/richardsforu/jpmc
+https://github.com/richardsforu/jpmc.git
+
+https://getbootstrap.com/docs/3.4/css/   ----> CSS 
+
+get
+
+Mean Stack
+Mongo DB - No SQL DB
+Express JS
+Angular JS , React JS
+Node JS
+
+DOM - Document Object Model (tree struc)
+
+HTML - W3C
+JS - Ecma Script(ES)
+OBPA- 
+Java moving to Reactive Programming
+
+JS
+1) Browser
+chrome - V8 engine
+IE - chakra
+Firefox - Rehno
+
+2) non browser
+NOde JS
+
+cmd 
+ 
+ 
+********Mar 1
+
+CSS 
+responsive design - Col1 col1-md...
+cards
+
+********
+JS
+loupe - abt js flow
+
+console.log('msg')
+
+***mar 04
+JS 
+Phase 1 - creation/push  (variable declaration - allocate space for var wherever the var declared)
+Phase 2 - 
+
+
+scope
+global - access across teh JC file 
+local - accessed only from that function
+
+function - 
+every function return one object
+IN JS - global object is window (super scope)
+
+
+ES - 6 
+new keyword - Let
+
+let 
+can't declare 2 variables with same name
+supports block scope
+ 
+
+
+
+const - not immutable
+
+---JS GUI
+
+*********Node JS 
+IN Node JS - global object is process (super scope)
+
+******mar 6
+
+jar -> java archival file (only class files)
+war -> web archival (class files + multimedia files)
+ear - enterprise archival (distibuted)   
+
+
+ApplicationContext as - new classpahxmlapplicationcontext("spring.xml");
+Employee emp=(Employee)ac.ferBean("emp");
+
+
+*********
+mysql -u root -h 10.242.219.208 -p
+
+ORM - object relational mapping
+
+driver=com.mysql.jpbc.Driver
+
+1) pom.xml (context, spring jdbc & mysql)
+2) properties - update conn details
+
+driver=com.mysql.cj.jdbc.Dricwr
+url=jdbc:mysql://localjost:3306/DB
+userName=root
+password=root
+
+3) create class & load DB conn details(@configuration)
+@configuration
+@component Scan(basepackages {"com.cts.product.dao","com.cts.product.service"})
+@propertySource(value={appln.properties)}
+  -> private Environment env; (@autowired)
+  -> create data source
+  -> return type DriverManagerDataSource
+	-> DriverManagerDataSource datasource=new DriverManagerDataSource();
+	@Bean
+	-> datasource.setDriverClassName(env.getProperty("driver")
+				* setUrl
+				* setUsername
+				* setPassword
+	-> return dataSource;
+
+4) new class com.cts.prod.model/Product (pojo class)
+5) DAO class creation prod.dao
+	@repository
+	Public class  {
+	@Autowired
+	private JdbcTemplate jt;
+
+	//insert
+	public void saveProdust(Product product) {
+		String qry="insert into product(id,name,price)values(?,?,?)";
+		jt.update(qry,product.get.id(),product.get.name(),product.get.price(),
+	}
+	
+	//find by ID
+	public product findbyid (String id) {
+		String qry="select * frpm product where id=?";
+	}
+	
+	//by name
+	public List<Map<object,Product>> findbyname(String name) {
+		String qry="select * from product where name like ?";
+		return jt.queryForList(qry,name); 
+	
+	}
+	
+	4) service class (load 
+	
+******mar 13
+new -> spring starter project
+change name & package name 
+select MySql & JDBC
+Finish
+
+paste this in properties file
+spring.datasource.url=jdbc:mysql://localhost:3306/db_example
+spring.datasource.username=springuser
+spring.datasource.password=ThePassword
+
+create class 'ProductDaoImpl'
+@Repository
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

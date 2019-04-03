@@ -1,0 +1,105 @@
+new -> spring starter project
+change name & package name 
+select MySql & JDBC
+Finish
+
+paste this in properties file
+spring.datasource.url=jdbc:mysql://localhost:3306/db_example
+spring.datasource.username=springuser
+spring.datasource.password=ThePassword
+
+Implementation class
+create class 'ProductDaoImpl'
+@Repository
+
+package com.cts.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class ProductDaoImpl {
+	
+	@Autowired
+	private JdbcTemplate jt;
+	
+	public void saveProduct(Product prod) {
+		String q1="insert into product values(?,?,?,?)";
+		jt.update(q1,prod.getId(),prod.getName(),prod.getPrice(),prod.getDescription());
+		System.out.println("Dao: Insert success");
+	}
+
+}
+
+Create POJO class
+package com.cts.demo;
+
+public class Product {
+	private  String id;
+	private  String name;
+	private  double price;
+	private  String description;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+}
+
+test class (DemoApplication.java)
+
+package com.cts.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class DemoApplication {
+
+	public static void main(String[] args) {
+		ApplicationContext ac= SpringApplication.run(DemoApplication.class, args);
+		ProductDaoImpl dao=ac.getBean(ProductDaoImpl.class);
+		
+		Product prod=new Product();
+		
+		prod.setId("P103");
+		prod.setName("Monitor");
+		prod.setPrice(500.00);
+		prod.setDescription("Monitorrrr");
+		
+		dao.saveProduct(prod);
+		
+		System.out.println("Done");
+		
+	}
+
+}
+
+
+
+
+
+
+
